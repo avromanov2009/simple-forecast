@@ -3,7 +3,7 @@ import { ForecastService } from './forecast.service';
 import { HumanReadableFormatService } from './human-readable-format/human-readable-format.service';
 import { ForecastLang } from './interfaces/forecast-lang';
 import { HumanReadableWeather } from './interfaces/human-readable-weather';
-import { ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('forecast')
 @Controller('forecast')
@@ -63,6 +63,9 @@ export class ForecastController {
         value: 'standard',
       },
     },
+  })
+  @ApiResponse({
+    type: HumanReadableWeather,
   })
   async getWeather(
     @Param('city') city: string,
