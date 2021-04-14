@@ -1,10 +1,20 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class HumanReadableWeather {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Title for weather widget',
+    required: true,
+    type: 'string',
+  })
   title: string;
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Message for user',
+    required: true,
+  })
   message: string;
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Image for widget',
+    required: true,
+  })
   icon: string;
 }

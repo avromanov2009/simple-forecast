@@ -9,7 +9,9 @@ describe('HumanReadableFormatService', () => {
       providers: [HumanReadableFormatService],
     }).compile();
 
-    service = module.get<HumanReadableFormatService>(HumanReadableFormatService);
+    service = module.get<HumanReadableFormatService>(
+      HumanReadableFormatService,
+    );
   });
 
   it('should be defined', () => {
