@@ -1,5 +1,6 @@
 import { HttpException, HttpService, Injectable, Scope } from '@nestjs/common';
 import { ForecastData } from './interfaces/forecast-data.interface';
+import { AxiosResponse } from 'axios';
 
 @Injectable({ scope: Scope.REQUEST })
 export class ForecastService {
@@ -27,7 +28,7 @@ export class ForecastService {
     try {
       const { data } = await this.httpService
         .get(`?${new URLSearchParams(this.query).toString()}`)
-        .toPromise();
+        .toPromise<AxiosResponse<ForecastData>>();
       return data;
     } catch (e) {
       throw new HttpException(e.response.data.message, e.response.data.cod);
